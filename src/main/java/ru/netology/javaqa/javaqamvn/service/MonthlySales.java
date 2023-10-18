@@ -19,7 +19,8 @@ public class MonthlySales {
         return averageSales;
     }
 
-    public static int countMonthsBelowAverage(int[] monthlySales, double averageSales) {
+    public static int countMonthsBelowAverage(int[] monthlySales) {
+        double averageSales = calcAverageSales(monthlySales);
         int belowAverageMonths = 0;
         for (int sales : monthlySales) {
             if (sales < averageSales) {
@@ -29,7 +30,8 @@ public class MonthlySales {
         return belowAverageMonths;
     }
 
-    public static int countMonthsAboveAverage(int[] monthlySales, double averageSales) {
+    public static int countMonthsAboveAverage(int[] monthlySales) {
+        double averageSales = calcAverageSales(monthlySales);
         int aboveAverageMonths = 0;
         for (int sales : monthlySales) {
             if (sales > averageSales) {
@@ -37,5 +39,29 @@ public class MonthlySales {
             }
         }
         return aboveAverageMonths;
+    }
+
+    public static int findMonthWithMaxSales(int[] monthlySales) {
+        int maxSales = monthlySales[0];
+        int month = 0;
+        for (int i = 1; i < monthlySales.length; i++) {
+            if (monthlySales[i] > maxSales) {
+                maxSales = monthlySales[i];
+                month = i;
+            }
+        }
+        return month + 1;
+    }
+
+    public static int findMonthWithMinSales(int[] monthlySales) {
+        int minSales = monthlySales[0];
+        int month = 0;
+        for (int i = 1; i < monthlySales.length; i++) {
+            if (monthlySales[i] < minSales) {
+                minSales = monthlySales[i];
+                month = i;
+            }
+        }
+        return month + 1;
     }
 }
